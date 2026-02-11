@@ -3,10 +3,10 @@ help: ## this help
 	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-]+:.*?## / {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
 .DEFAULT_GOAL := help
 
-GOVERSION ?= 1.25.6
+GO_VERSION ?= %GO_VERSION%
 APP_NAME ?= %APP_NAME%
 
-GOTAG ?= $(GOVERSION)-alpine
+GOTAG ?= $(GO_VERSION)-alpine
 HOST_OS ?= $(shell uname -s | tr '[:upper:]' '[:lower:]')
 HOST_ARCH ?= $(shell uname -m | sed -e 's/x86_64/amd64/' -e 's/aarch64/arm64/' -e 's/arm64/arm64/')
 HOST_PLATFORM ?= $(HOST_OS)/$(HOST_ARCH)

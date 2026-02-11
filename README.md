@@ -4,11 +4,13 @@ A minimal template repository for Go projects. The code chunk below initializes 
 
 ```bash
 export APP_NAME=
+export GO_VERSION=1.26.0
 bash -ceu '
 if [ -z "${APP_NAME:-}" ]; then printf "APP_NAME must be set\n" >&2; exit 1; fi
 git clone https://github.com/egor-georgiev/go_template_repo "$APP_NAME"
 cd "$APP_NAME"
-sed -i.bak "s/%APP_NAME%/$APP_NAME/g" Makefile
+sed -i.bak -e "s/%APP_NAME%/$APP_NAME/g" -e "s/%GO_VERSION%/$GO_VERSION/g" Makefile
+sed -i.bak "s/%GO_VERSION%/$GO_VERSION/g" Dockerfile
 rm -f Makefile.bak
 printf "# %s\n" "$APP_NAME" > README.md
 printf "%s\n%s_dev\n" "$APP_NAME" "$APP_NAME" > .gitignore
@@ -19,5 +21,5 @@ git commit --amend --no-edit
 make run
 '
 cd "$APP_NAME"
-unset APP_NAME
+unset APP_NAME GO_VERSION
 ```

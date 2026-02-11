@@ -1,4 +1,4 @@
-ARG GOTAG=1.25.6 # the default value is here to avoid warnings, always passed from Makefile explicitly
+ARG GOTAG=%GO_VERSION% # the default value is here to avoid warnings, always passed from Makefile explicitly
 FROM --platform=${BUILDPLATFORM} golang:${GOTAG} AS builder
 ARG TARGETOS TARGETARCH APP_NAME
 ENV GOOS=${TARGETOS} GOARCH=${TARGETARCH} APP_NAME=${APP_NAME}
