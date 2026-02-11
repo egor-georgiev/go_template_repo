@@ -1,6 +1,8 @@
 # Go Template Repository
 
-A minimal template repository for Go projects. The code chunk below initializes the project.
+This template repository contains a small build system for Go projects.
+The code block below initializes the project.
+The only manual step is setting up the Git remotes.
 
 ```bash
 export APP_NAME=
@@ -11,7 +13,7 @@ git clone https://github.com/egor-georgiev/go_template_repo "$APP_NAME"
 cd "$APP_NAME"
 sed -i.bak -e "s/%APP_NAME%/$APP_NAME/g" -e "s/%GO_VERSION%/$GO_VERSION/g" Makefile
 sed -i.bak "s/%GO_VERSION%/$GO_VERSION/g" Dockerfile
-rm -f Makefile.bak
+rm -f {Makefile,Dockerfile}.bak
 printf "# %s\n" "$APP_NAME" > README.md
 printf "%s\n%s_dev\n" "$APP_NAME" "$APP_NAME" > .gitignore
 for remote in $(git remote); do git remote remove "$remote"; done
