@@ -17,7 +17,7 @@ RUN --mount=type=cache,target=/go/pkg/mod \
 FROM builder AS build_dev
 RUN --mount=type=cache,target=/go/pkg/mod \
     --mount=type=cache,target=/root/.cache/go-build \
-    go build -cover -covermode atomic -o "${APP_NAME}_dev" .
+    go build -o "${APP_NAME}_dev" .
 
 FROM scratch AS final
 COPY --from=build /code/ .
